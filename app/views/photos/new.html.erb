@@ -1,0 +1,44 @@
+<h1></h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @photo do |f| %>
+
+  <div class='form-group'>
+  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class='form-check'>
+          <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+          <% end %>
+      </div>
+  <% end %>
+</div>
+
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+  <div class="field">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :季節  %>
+    <%= f.select :season, 
+    [["春", "春"], 
+    ["夏", "夏"], 
+    ["秋", "秋"],
+    ["冬","冬"]], include_blank: "選択して下さい" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :場所  %>
+    <%= f.text_area :address, :size => "30x2" %>
+  </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", photos_path %>
