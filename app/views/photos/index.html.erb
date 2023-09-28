@@ -1,36 +1,55 @@
-<h1></h1>
-<h3>一覧ページ</h3>
-<%= link_to "新規投稿へ", new_photo_path %>
+
+ <header>
+  <h1>Phototrip</h1>
+  <div class="header-list">
+   <ul>
+    <% if user_signed_in? %>
+     <li><%= button_to 'log out', destroy_user_session_path, method: :delete %></li>
+    <li> <%= link_to "post", new_photo_path %><li>
+    <% else %>
+     <li><%= link_to "signup", new_user_registration_path %></li>
+     <li><%= link_to "login", new_user_session_path %></li>
+    <% end %>
+    <% if user_signed_in? %>
+  <li><%= link_to "my page", user_path(current_user.id) %><li>
+<% end %>
+   </ul>
+  </div>
+ </header>
+ <body>
+
 <div class="photos-container">
-<% if user_signed_in? %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-<% end %>
 
+<div class="tag-list">
 <%= form_tag({controller:"photos",action:"index"}, method: :get) do %>
-  <%= text_field_tag :tag %>
-  <%= submit_tag 'タグを追加' %>
-<% end %>
-
-<%= form_tag({controller:"photos",action:"index"}, method: :get) do %>
-  <% Tag.all.each do |t| %>
-      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+ <ul>
+ <% Tag.all.each do |t| %>
+      <li><%= check_box :tag_ids, t.name %><%= t.name %><li>
+<ul>
   <% end %>
   <%= submit_tag '検索' %>
 <% end %>
+<li><%= link_to "back", photos_path %><li>
 
-  <% @photos.each do |t| %>
-    <div class="photo">
-    <%= t.user.email %>
-    <%= image_tag t.image_url, size: "250x200" if t.image? %>
-    <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
-      <%= t.name %>
-      <%= t.address %>
-      <%= t.season %>
-      <%= link_to "詳細へ", photo_path(t.id) %>
-      <%= link_to "編集する", edit_photo_path(t.id) %>
-      <%= button_to "削除する", photo_path(t.id), method: :delete %>
-      <%= link_to t.user.name, user_path(t.user.id) %> 
-     <%= t.user.email %>
-    </div>
-  <% end %>
 </div>
+
+<div class="photo">
+ 
+  <% @photos.each do |t| %>
+   
+    <div class="waku">
+    
+    <%= image_tag t.image_url, size: "250x300" if t.image? %>
+    <%= image_tag t.user.image_url, size: "250x300" if t.user.image? %>
+    <div class="photo2">
+    <h5><%= link_to t.user.name, user_path(t.user.id) %></h5>
+    <h5><%= link_to "detail", photo_path(t.id) %></h5>
+    <h5><%= button_to "delete", photo_path(t.id), method: :delete %></h5>
+    </div>
+    </div>
+    <% end %>
+    
+  </div>
+
+</div>
+</body>

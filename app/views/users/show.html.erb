@@ -1,20 +1,29 @@
-<h1>users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<h1>user page</h1>
+<p>name : <%= @user.name %></p>
+<p>mail address : <%= @user.email %></p>
+<p>profile : <%= @user.profile %></p>
 <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
-<% if current_user.id == @user.id %>
-  <%= link_to "編集する", edit_user_registration_path %>
-<% end %>
+<ul>
+  <li><%= link_to "edit profile", edit_user_registration_path %><li>
+  <li><%= link_to "back", photos_path %><li>
+</ul>
 
-<h2>ユーザーの投稿一覧</h2>
+<h3>posts list</h3>
+<div class="photos-container2">
+<div class="photo">
 <% @user.photos.each do |t| %>
-  <%= t.user.name %>
-  <%= t.image %>
+  <div class="waku">
+  <%= image_tag t.user.image_url, size: "250x300" if t.user.image? %>
+  <%= image_tag t.image_url, size: "250x300" if t.image? %>
+  <div class="photo2">
+  <h5><%= t.user.name %></h5>
+  <h5><%= link_to "detail", photo_path(t.id) %></h5>
+    </div>
+    </div>
 <% end %>
+</div>
+</div>
 
 
 
 
-
-<%= link_to "一覧に戻る", photos_path %>

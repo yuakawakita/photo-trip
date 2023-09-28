@@ -10,24 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
   </head>
-
-  <body>
- <header>
-  <h1>Phototrip</h1>
-  <div class="header-list">
-   <ul>
-    <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-     <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
-    <% end %>
-   </ul>
-  </div>
- </header>
- <main>
+<body>
+  
   <%= yield %>
- </main>
-</body>
+  </body>
+ <footer>
+      <p><a href="https://jp.freepik.com/free-photo/3d-render-of-a-tree-landscape-against-a-night-sky_1117987.htm#page=2&query=%E7%B5%B6%E6%99%AF&position=14&from_view=keyword&track=sph">著作者：kjpargeter</a>／出典：Freepik</p>
+    </footer>
   
 </html>

@@ -14,38 +14,19 @@
  *= require_self
  */
 
- * {
-    padding: 0;
-    margin: 0;
-  }
-  body {
-    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
-      Meiryo, "ＭＳ Ｐゴシック", sans-serif;
-  }
-  header {
-    background-color: #00acee;
-    height: 80px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header a {
-    color: white; 
-    text-decoration: none; 
-  }
-  header h1 {
-    color: white;
-    margin-left: 20px;
-  }
-  .header-list {
-    display: flex;
-    align-items: center;
-  }
-  header ul {
-    display: flex;
-  }
-  header li {
-    list-style: none;
-    margin-right: 40px;
+ body {
+    background-image: url("371995373-kabekinwallpaper_0013_Layer_10-M8qO-1536x864-MM-100");
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.3);
+ color: rgb(255, 255, 255);
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-size: 30px;
+  position: relative; 
+  font-family: "Freestyle Script", "ヒラギノ角ゴ Pro W3", "メイリオ",
+    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+  text-align: center;
+  list-style: none;
+  text-decoration:none;
+  
   }
